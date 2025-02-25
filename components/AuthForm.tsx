@@ -17,6 +17,8 @@ import {
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import Link from "next/link";
+import { createAccount } from "@/lib/actions/user.actions";
+import OTPModal from "./OTPModal";
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -36,6 +38,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const formSchema = AuthFormSchema(type);
+  const [accountId, setAccountId] = useState("");
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -45,7 +48,18 @@ const AuthForm = ({ type }: { type: FormType }) => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    setIsLoading(true);
+    try {
+      const user = await createAccount({
+        fullName: values.fullName || "",
+        email: values.email,
+      });
+      setAccountId(user.accountId);
+    } catch (error) {
+      setErrorMessage("Failed to create an Account ,Try Again");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -144,6 +158,9 @@ const AuthForm = ({ type }: { type: FormType }) => {
           </div>
         </form>
       </Form>
+      {accountId && (
+        <OTPModal accountId={accountId} email={form.getValues("email")} />
+      )}
     </>
   );
 };
