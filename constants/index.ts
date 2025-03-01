@@ -80,6 +80,6 @@ export const navItems = [
       value: 'size-asc',
     },
   ];
-  export const avatarPlaceHolder='https://cdn-icons-png.flaticon.com/512/266/266033.png'
+  export const avatarPlaceHolder='https://cdn3d.iconscout.com/3d/premium/thumb/man-avatar-3d-icon-download-in-png-blend-fbx-gltf-file-formats--men-people-male-pack-avatars-icons-5187871.png?f=webp'
   
   export const MAX_FILE_SIZE = 50 * 1024 * 1024; 
