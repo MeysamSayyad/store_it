@@ -23,12 +23,12 @@ interface Props {
   fullName: string;
   avatar: string;
   email: string;
-  ownerId: string;
+  $id: string;
   accountId: string;
 }
 
 function MobileNavigation({
-  ownerId,
+  $id: ownerId,
   accountId,
   fullName,
   avatar,
@@ -99,7 +99,7 @@ function MobileNavigation({
           </nav>
           <Separator className="my-5 bg-light-200/20" />
           <div className=" flex flex-col justify-between gap-5">
-            <FileUploader />
+            <FileUploader ownerId={ownerId} accountId={accountId} />
             <Button
               onClick={async () => {
                 await SignOutUser();
