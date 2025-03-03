@@ -19,7 +19,7 @@ export default async function Layout({
       <section className=" flex h-full flex-1 flex-col">
         <MobileNavigation {...currentUser} />
         <Header userId={currentUser.$id} accountId={currentUser.accountId} />
-        <div className="main-content"></div>
+        <div className="main-content">{children}</div>
       </section>
     </main>
   );
