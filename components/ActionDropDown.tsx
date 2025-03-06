@@ -3,11 +3,9 @@ import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import {
   DropdownMenu,
@@ -45,17 +43,18 @@ const ActionDropDown = ({ file }: { file: Models.Document }) => {
   const handleAction = async () => {
     if (!action) return;
     setIsLoading(true);
-    let success: any = false;
+    let success = false;
     const actions = {
-      rename: () =>
-        renameFile({
+      rename: () => {
+        return renameFile({
           fileId: file.$id,
           name,
           extension: file.extension,
           path,
-        }),
+        });
+      },
       share: () => {
-        updateFileUsers({
+        return updateFileUsers({
           fileId: file.$id,
           emails,
 
@@ -63,7 +62,7 @@ const ActionDropDown = ({ file }: { file: Models.Document }) => {
         });
       },
       delete: () => {
-        deleteFile({
+        return deleteFile({
           fileId: file.$id,
           bucketFileId: file.bucketFileId,
 
@@ -73,7 +72,7 @@ const ActionDropDown = ({ file }: { file: Models.Document }) => {
     };
     success = await actions[action.value as keyof typeof actions]();
     if (success) closeAllModals();
-    if (success?.name) setName(success.name);
+
     setIsLoading(false);
   };
   const handleRemoveUser = async (email: string) => {

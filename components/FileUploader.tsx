@@ -1,5 +1,5 @@
 "use client";
-import React, { MouseEvent, useState } from "react";
+import React, { useState } from "react";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { Button } from "./ui/button";
@@ -58,7 +58,7 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
     },
     [ownerId, accountId, path]
   );
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   return (
     <div {...getRootProps()} className="cursor-pointer ">

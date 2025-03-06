@@ -1,6 +1,6 @@
 "use server";
 
-import { Query, Account, ID } from "node-appwrite";
+import { Query, ID } from "node-appwrite";
 import { createAdminClient, createSessionClient } from "../appwrite";
 import { appwriteConfig } from "../appwrite/config";
 import { parseStringify } from "../utils";

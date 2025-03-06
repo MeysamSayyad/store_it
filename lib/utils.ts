@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -112,7 +113,7 @@ export const formatDateTime = (isoString: string | null | undefined) => {
 
 export const getFileIcon = (
   extension: string | undefined,
-  type: FileType | string,
+  type: FileType | string
 ) => {
   switch (extension) {
     // Document

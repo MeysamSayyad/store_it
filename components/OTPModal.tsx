@@ -2,18 +2,15 @@
 import {
   AlertDialog,
   AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import {
   InputOTP,
   InputOTPGroup,
-  InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import Image from "next/image";
@@ -65,7 +62,7 @@ export default function OTPModal({
             Enter Your OTP
           </AlertDialogTitle>
           <AlertDialogDescription className="subtitle-2 text-center text-light-100">
-            We've sent a code to{" "}
+            {"We've sent a code to"}
             <span className=" p-l-1 text-brand">{email}</span>
           </AlertDialogDescription>
         </AlertDialogHeader>
@@ -100,7 +97,7 @@ export default function OTPModal({
               )}
             </AlertDialogAction>
             <div className="subtitle-2 text-center mt-2">
-              Didn't get a code?
+              {"Didn't get a code?"}
               <Button
                 type="button"
                 variant={"link"}

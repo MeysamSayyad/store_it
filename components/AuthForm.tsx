@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -20,11 +19,6 @@ import Link from "next/link";
 import { createAccount, signInUser } from "@/lib/actions/user.actions";
 import OTPModal from "./OTPModal";
 
-const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-});
 const AuthFormSchema = (formType: FormType) => {
   return z.object({
     email: z.string().email(),
@@ -59,6 +53,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
           : await signInUser({ email: values.email });
       setAccountId(user.accountId);
     } catch (error) {
+      console.log(error);
       setErrorMessage(
         type == "sign-in"
           ? "Failed to Login ,Try Again"
