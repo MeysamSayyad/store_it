@@ -4,6 +4,7 @@ import Sidebar from "@/components/sidebar";
 import { getCurrentUser } from "@/lib/actions/user.actions";
 import { redirect } from "next/navigation";
 import React from "react";
+export const dynamic = "force-dynamic";
 
 export default async function Layout({
   children,
